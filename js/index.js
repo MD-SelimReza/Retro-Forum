@@ -1,11 +1,24 @@
 let readingPostCount = parseInt(document.getElementById('read-post-count').innerText);
 
-const postsLoads = async (searchText, isSearch) => {
+const postsLoads = async (searchText, isSearch, isFound) => {
+    const postsContainer = document.getElementById('posts-container');
+    postsContainer.textContent = '';
     if (isSearch) {
         const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
         const json = await res.json();
         const posts = json.posts;
-        displayPosts(posts);
+        if (posts.length > 0) {
+            displayPosts(posts);
+        } else {
+            if (isFound) {
+                const alert = document.createElement('div');
+                alert.classList = 'mt-5 bg-[#12132D08] p-3 rounded-2xl space-y-1';
+                alert.innerHTML = `<p class= "text-black font-bold text-xl">${searchText}</p>
+                <p>Sorry, we couldn't find any matches</p>`;
+                postsContainer.appendChild(alert);
+            }
+        }
+        console.log(posts);
     } else {
         const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
         const json = await res.json();
@@ -47,7 +60,6 @@ function displayPosts(posts) {
         `;
         postsContainer.appendChild(postBox);
     });
-    loadingPost(false);
 };
 
 const readPost = async (id) => {
@@ -70,24 +82,21 @@ const markPost = (postData) => {
     </div>
     `;
     readingPostContainer.appendChild(readingPost);
-}
+};
 
+const showingPost = () => {
+    const searchField = document.getElementById('search-field');
+    const searchText = searchField.value;
+    postsLoads(searchText, true, true);
+};
 
 const searchPost = () => {
     loadingPost(true);
-    const searchField = document.getElementById('search-field');
-    const searchText = searchField.value;
-    postsLoads(searchText, true);
-}
-
-const searchField = document.getElementById('search-field');
-searchField.addEventListener('keypress', (event) => {
-    loadingPost(true);
-    if (event.key = "Enter") {
-        const searchText = document.getElementById('search-field').value;
-        postsLoads(searchText, true);
-    }
-});
+    setTimeout(() => {
+        loadingPost(false);
+        showingPost();
+    }, 2000);
+};
 
 const loadingPost = (isLoading) => {
     const loadingSpinner = document.getElementById('loading-spinner');
@@ -95,9 +104,8 @@ const loadingPost = (isLoading) => {
         loadingSpinner.classList.remove('hidden');
     } else {
         loadingSpinner.classList.add('hidden');
-    }
-}
-
+    };
+};
 
 const fetchLatestPosts = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/latest-posts`);
@@ -133,7 +141,7 @@ const showLatestPost = (latestPosts) => {
         </div>
         `;
         latestPostContainer.appendChild(latestPostBox);
-    })
+    });
 };
 
 fetchLatestPosts();

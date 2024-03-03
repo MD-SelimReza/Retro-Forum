@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Assignment 6</title>
+    <title>Welcome to ReTro Forum</title>
+
     <!-- daisy ui and tailwind css -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
@@ -11,6 +12,7 @@
       type="text/css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- font awesome link -->
     <link
       rel="stylesheet"
@@ -19,6 +21,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
     <!-- google font mulish -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,13 +36,13 @@
     </style>
   </head>
   <body class="font-mulish">
-    <header class="container lg:px-10 px-2">
+    <header class="container lg:px-10 px-2 relative">
       <!-- loading spinner -->
       <div
         id="loading-spinner"
-        class="flex justify-center items-center h-screen hidden"
+        class="flex absolute top-[110%] right-[50%] hidden"
       >
-        <span class="loading loading-spinner text-primary"></span>
+        <span class="loading loading-spinner text-[#10B981]"></span>
       </div>
 
       <!-- navbar here -->
@@ -145,7 +148,8 @@
                   <span class="text-[#797DFC]">ReTro</span> Forum
                 </h1>
                 <p class="text-xl my-3">
-                  Share your favorite opinion and win and wp forum coffee mug!
+                  Motivation is not just a fleeting feeling; it's the spark that
+                  ignites the fire of achievement
                 </p>
                 <div
                   class="bg-white p-1 flex gap-2 justify-between rounded-full my-5"
@@ -154,7 +158,7 @@
                     type="text"
                     name=""
                     id="search-field"
-                    class="rounded-full px-3 flex-1 focus:bg-gray-300 text-black"
+                    class="rounded-full px-3 flex-1 focus:bg-gray-300 border-none outline-none text-black"
                     placeholder="Search here anything"
                   />
                   <button
@@ -186,14 +190,16 @@
         </div>
       </section>
     </header>
+
+    <!-- main section -->
     <main class="container lg:px-10 px-2">
       <!-- discuss section -->
       <section class="my-10 lg:mt-20">
         <div class="text-center mb-5">
           <h3 class="text-4xl text-[#12132D] font-black">Let’s Discuss</h3>
           <p class="lg:w-[650px] mx-auto my-3">
-            Yes, you can run unit tests and view the results directly within the
-            app. The integrated testing features allow for a streamlined .
+            It's the fuel that keeps us going when the journey gets tough, the
+            beacon of light that guides us through the darkest of times.
           </p>
         </div>
         <div class="flex flex-col lg:flex-row justify-between gap-5">
@@ -225,9 +231,9 @@
               <div class="text-white space-y-5">
                 <h3 class="text-4xl font-black">Join Our Forum</h3>
                 <p>
-                  Share your favorite opinion and win and wp forum coffee mug!
-                  Yes, you can run unit tests and view the results directly
-                  within the app.
+                  So how do we cultivate and sustain motivation in the face of
+                  life's challenges? The answer lies in purpose, passion, and
+                  persistence.
                 </p>
                 <button
                   class="btn bg-[#797DFC] rounded-full border-none px-8 text-white"
@@ -248,47 +254,27 @@
         <div class="text-center mb-5">
           <h3 class="text-4xl text-[#12132D] font-black">Latest Posts</h3>
           <p class="lg:w-[650px] mx-auto my-3">
-            Yes, you can run unit tests and view the results directly within the
-            app. The integrated testing features allow for a streamlined .
+            First and foremost, find your purpose. What drives you? What ignites
+            your soul and fills you with a sense of purpose?
           </p>
         </div>
         <div
           id="latestPostContainer"
           class="grid gap-4 lg:grid-cols-3 grid-cols-1"
-        >
-          <!-- <div class="card card-compact border p-4 space-y-5">
-            <figure class="rounded-2xl">
-              <img
-                src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                alt="Shoes"
-              />
-            </figure>
-            <div class="space-y-3">
-              <p><span></span>Date</p>
-              <h2 class="card-title text-lg font-extrabold">Title</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div class="card-actions">
-                <div class="size-12 rounded-full bg-gray-400">
-                  <img src="images/joinforum.png" alt="profile-pic" />
-                </div>
-                <div class="ml-2">
-                  <p class="font-bold">Name</p>
-                  <p>Desigation</p>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </div>
+        ></div>
       </section>
     </main>
+
+    <!-- footer section -->
     <footer class="lg:mt-20 mt-10 bg-[#30325E1A] lg:p-20 py-10 px-5">
       <div class="text-center mb-5">
         <h3 class="text-center">
           <img src="images/logo.png" alt="" class="mx-auto" />
         </h3>
         <p class="lg:w-[650px] mx-auto my-3">
-          Yes, you can run unit tests and view the results directly within the
-          app. The integrated testing features allow for a streamlined .
+          When you align your goals with your deepest values and aspirations,
+          you tap into a wellspring of motivation that is unshakeable and
+          unwavering.
         </p>
       </div>
       <div
@@ -301,6 +287,7 @@
       </div>
       <p class="text-center mt-5">2017, All Rights Reserved.</p>
     </footer>
+
     <!-- script link here -->
     <script src="js/index.js"></script>
   </body>
