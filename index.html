@@ -33,7 +33,15 @@
     </style>
   </head>
   <body class="font-mulish">
-    <header class="container lg:px-10">
+    <header class="container lg:px-10 px-2">
+      <!-- loading spinner -->
+      <div
+        id="loading-spinner"
+        class="flex justify-center items-center h-screen hidden"
+      >
+        <span class="loading loading-spinner text-primary"></span>
+      </div>
+
       <!-- navbar here -->
       <nav>
         <div class="navbar flex bg-base-100">
@@ -85,28 +93,28 @@
               <ul class="menu menu-horizontal px-1 text-xl space-x-3">
                 <li>
                   <a
-                    class="tooltip tooltip-bottom bg-[#12132D08] rounded-full border border-[#0307121A]"
+                    class="tooltip tooltip-bottom bg-[#12132D08] size-10 p-5 flex justify-center items-center rounded-full border border-[#0307121A]"
                     data-tip="home"
                     ><i class="fa-solid fa-house"></i
                   ></a>
                 </li>
                 <li>
                   <a
-                    class="tooltip tooltip-bottom bg-[#12132D08] rounded-full border border-[#0307121A]"
+                    class="tooltip tooltip-bottom bg-[#12132D08] size-10 p-5 flex justify-center items-center rounded-full border border-[#0307121A]"
                     data-tip="edit"
                     ><i class="fa-solid fa-pencil"></i
                   ></a>
                 </li>
                 <li>
                   <a
-                    class="tooltip tooltip-bottom bg-[#12132D08] rounded-full border border-[#0307121A]"
+                    class="tooltip tooltip-bottom bg-[#12132D08] size-10 p-5 flex justify-center items-center rounded-full border border-[#0307121A]"
                     data-tip="user"
                     ><i class="fa-solid fa-user-plus"></i
                   ></a>
                 </li>
                 <li>
                   <a
-                    class="tooltip tooltip-bottom bg-[#12132D08] rounded-full border border-[#0307121A]"
+                    class="tooltip tooltip-bottom bg-[#12132D08] size-10 p-5 flex justify-center items-center rounded-full border border-[#0307121A]"
                     data-tip="flag"
                     ><i class="fa-regular fa-flag"></i
                   ></a>
@@ -114,7 +122,7 @@
               </ul>
             </div>
             <div class="">
-              <a class="btn bg-[#797DFC] rounded-full text-white text-xl"
+              <a class="btn bg-[#797DFC] px-6 rounded-full text-white text-xl"
                 >Sign In</a
               >
             </div>
@@ -123,7 +131,7 @@
       </nav>
 
       <!-- banner section -->
-      <section>
+      <section class="lg:mt-5">
         <div class="bg-[#12132D] rounded-2xl">
           <div class="hero w-full bg-[url(images/bgbanner.png)] bg-cover">
             <div
@@ -178,9 +186,9 @@
         </div>
       </section>
     </header>
-    <main class="container lg:px-10">
+    <main class="container lg:px-10 px-2">
       <!-- discuss section -->
-      <section class="my-10">
+      <section class="my-10 lg:mt-20">
         <div class="text-center mb-5">
           <h3 class="text-4xl text-[#12132D] font-black">Let’s Discuss</h3>
           <p class="lg:w-[650px] mx-auto my-3">
@@ -189,57 +197,26 @@
           </p>
         </div>
         <div class="flex flex-col lg:flex-row justify-between gap-5">
-          <div id="posts-container" class="w-full lg:w-[60%]">
-            <!-- <div class="flex gap-4 bg-[#F3F3F5] rounded-3xl p-6">
-              <div class="size-16 bg-gray-500 relative rounded-lg">
-                <div
-                  class="bg-green-500 size-3 rounded-full absolute -top-1 -right-1"
-                ></div>
-                <img src="images/joinforum.png" alt="profile-pic" />
-              </div>
-              <div class="flex w-full flex-col justify-between">
-                <p class="space-x-8">
-                  <span># music</span> <span>Author: Awlad Hossin</span>
-                </p>
-                <h3 class="text-xl text-[#12132D] font-bold my-2">Title</h3>
-                <p>Description</p>
-                <div
-                  class="flex justify-between border-t border-dashed border-[#12132D99] mt-5 pt-5"
-                >
-                  <p class="space-x-8">
-                    <span><i class="fa-regular fa-message"></i></span>
-                    <span><i class="fa-regular fa-eye"></i></span>
-                    <span><i class="fa-regular fa-clock"></i></span>
-                  </p>
-                  <span><i class="fa-regular fa-envelope"></i></span>
-                </div>
-              </div>
-            </div> -->
-          </div>
-          <div class="bg-[#12132D08] w-full lg:w-[40%] mt-5 p-4 rounded-2xl">
+          <div id="posts-container" class="w-full lg:w-[60%]"></div>
+          <div
+            id="reading-post-container"
+            class="bg-[#12132D08] w-full lg:w-[40%] mt-5 p-4 rounded-2xl"
+          >
             <div class="flex justify-between mb-5">
               <h5 class="text-[#12132D] text-xl font-bold">Title</h5>
               <p>
-                <span><i class="fa-solid fa-check-double"></i></span> Mark as
-                read (<span>4</span>)
-              </p>
-            </div>
-            <div
-              class="bg-[#FFFFFF] flex justify-between items-center p-2 rounded-lg"
-            >
-              <p class="font-semibold">
-                10 Kids Unaware of Their <br />
-                Halloween Costume
-              </p>
-              <p>
-                <span><i class="fa-regular fa-eye"></i></span> 1,568
+                <span class="text-[#3DCE09]"
+                  ><i class="fa-solid fa-check-double"></i
+                ></span>
+                Mark as read (<span id="read-post-count">0</span>)
               </p>
             </div>
           </div>
         </div>
       </section>
+
       <!-- forum section -->
-      <section class="my-10">
+      <section class="my-10 lg:mt-20">
         <div class="bg-[#12132D] rounded-2xl">
           <div class="hero w-full">
             <div
@@ -265,8 +242,9 @@
           </div>
         </div>
       </section>
+
       <!-- latest section -->
-      <section>
+      <section class="lg:mt-20">
         <div class="text-center mb-5">
           <h3 class="text-4xl text-[#12132D] font-black">Latest Posts</h3>
           <p class="lg:w-[650px] mx-auto my-3">
@@ -303,7 +281,7 @@
         </div>
       </section>
     </main>
-    <footer class="mt-10 bg-[#30325E1A] lg:p-20 py-10 px-5">
+    <footer class="lg:mt-20 mt-10 bg-[#30325E1A] lg:p-20 py-10 px-5">
       <div class="text-center mb-5">
         <h3 class="text-center">
           <img src="images/logo.png" alt="" class="mx-auto" />

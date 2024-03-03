@@ -1,3 +1,5 @@
+let readingPostCount = parseInt(document.getElementById('read-post-count').innerText);
+
 const postsLoads = async (searchText, isSearch) => {
     if (isSearch) {
         const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
@@ -15,21 +17,13 @@ const postsLoads = async (searchText, isSearch) => {
 function displayPosts(posts) {
     const postsContainer = document.getElementById('posts-container');
     postsContainer.textContent = '';
-    posts.forEach(post => {
-        // console.log(post.isActive);
-        const isActive = document.getElementById('isActive');
-        // if (post.isActive = true) {
-        //     isActive.classList.add('bg-green-400');
-        // }
-        // else {
-        //     isActive.classList.add('bg-red-400');
-        // };
+    posts.map(post => {
         const postBox = document.createElement('div');
         postBox.classList = "flex gap-4 bg-[#F3F3F5] rounded-3xl p-6 mt-5";
         postBox.innerHTML = `
         <div class="size-16 bg-gray-500 relative rounded-lg">
             <div id="isActive"
-                class="size-3 bg-green-400 rounded-full absolute -top-1 -right-1"
+                class="size-3 ${post.isActive ? 'bg-[#10B981]' : 'bg-[#FF3434]'} rounded-full absolute -top-1 -right-1"
             ></div>
             <img src="${post.image}" alt="profile-pic" class="size-16 rounded-lg" />
         </div>
@@ -42,21 +36,45 @@ function displayPosts(posts) {
             <div
                 class="flex justify-between border-t border-dashed border-[#12132D99] mt-5 pt-5"
             >
-                <p class="space-x-8">
+                <p class="space-x-5">
                 <span><i class="fa-regular fa-message"></i> ${post.comment_count}</span>
                 <span><i class="fa-regular fa-eye"></i> ${post.view_count}</span>
                 <span><i class="fa-regular fa-clock"></i> ${post.posted_time} min</span>
                 </p>
-                <span onclick="readPost(${console.log(post)})" class="bg-[#10B981] text-white rounded-full px-1"><i class="fa-regular fa-envelope"></i></span>
+                <span onclick="readPost(${post.id})" class="bg-[#10B981] size-5 p-3 flex justify-center items-center text-white rounded-full"><i class="fa-regular fa-envelope"></i></span>
             </div>
         </div>
         `;
         postsContainer.appendChild(postBox);
     });
+    loadingPost(false);
 };
+
+const readPost = async (id) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/post/${id}`);
+    const postData = await res.json();
+    markPost(postData);
+};
+
+const markPost = (postData) => {
+    readingPostCount += 1;
+    document.getElementById('read-post-count').innerText = readingPostCount;
+    const readingPostContainer = document.getElementById('reading-post-container');
+    const readingPost = document.createElement('div');
+    readingPost.innerHTML = `
+    <div
+        class="bg-[#FFFFFF] flex justify-between items-center p-2 rounded-lg mt-4"
+    >
+        <p class="font-semibold w-48">${postData.title}</p>
+        <p><i class="fa-regular fa-eye"></i> ${postData.view_count}</p>
+    </div>
+    `;
+    readingPostContainer.appendChild(readingPost);
+}
 
 
 const searchPost = () => {
+    loadingPost(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     postsLoads(searchText, true);
@@ -64,11 +82,21 @@ const searchPost = () => {
 
 const searchField = document.getElementById('search-field');
 searchField.addEventListener('keypress', (event) => {
+    loadingPost(true);
     if (event.key = "Enter") {
         const searchText = document.getElementById('search-field').value;
         postsLoads(searchText, true);
     }
-})
+});
+
+const loadingPost = (isLoading) => {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if (isLoading) {
+        loadingSpinner.classList.remove('hidden');
+    } else {
+        loadingSpinner.classList.add('hidden');
+    }
+}
 
 
 const fetchLatestPosts = async () => {
@@ -78,10 +106,8 @@ const fetchLatestPosts = async () => {
 };
 
 const showLatestPost = (latestPosts) => {
-    // console.log(latestPosts);
     const latestPostContainer = document.getElementById('latestPostContainer');
     latestPosts.forEach(latestPost => {
-        // console.log(post);
         const latestPostBox = document.createElement('div');
         latestPostBox.classList = "card card-compact border p-4 space-y-5";
         latestPostBox.innerHTML = `
@@ -108,9 +134,9 @@ const showLatestPost = (latestPosts) => {
         `;
         latestPostContainer.appendChild(latestPostBox);
     })
-}
+};
 
 fetchLatestPosts();
 
-
 postsLoads();
+
