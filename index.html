@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,9 +19,115 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- google font mulish -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .font-mulish {
+        font-family: "Mulish", sans-serif;
+      }
+    </style>
   </head>
-  <body>
-    <header></header>
+  <body class="font-mulish">
+    <header class="container lg:px-10">
+      <nav>
+        <div class="navbar flex bg-base-100">
+          <div class="flex-1">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <a href="#" class="size-5"
+                  ><i class="fa-solid fa-ellipsis-vertical"></i
+                ></a>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-xl"
+              >
+                <li>
+                  <a
+                    class="tooltip tooltip-right bg-[#12132D08]"
+                    data-tip="home"
+                    ><i class="fa-solid fa-house"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="tooltip tooltip-right bg-[#12132D08]"
+                    data-tip="edit"
+                    ><i class="fa-solid fa-pencil"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="tooltip tooltip-right bg-[#12132D08]"
+                    data-tip="user"
+                    ><i class="fa-solid fa-user-plus"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="tooltip tooltip-right bg-[#12132D08]"
+                    data-tip="flag"
+                    ><i class="fa-regular fa-flag"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+            <a class="btn btn-ghost text-xl"
+              ><img src="images/logo.png" alt=""
+            /></a>
+          </div>
+          <div class="flex gap-4">
+            <div class="hidden lg:flex">
+              <ul class="menu menu-horizontal px-1 text-xl space-x-3">
+                <li>
+                  <a
+                    class="tooltip tooltip-bottom bg-[#12132D08] rounded-full border border-[#0307121A]"
+                    data-tip="home"
+                    ><i class="fa-solid fa-house"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="tooltip tooltip-bottom bg-[#12132D08] rounded-full border border-[#0307121A]"
+                    data-tip="edit"
+                    ><i class="fa-solid fa-pencil"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="tooltip tooltip-bottom bg-[#12132D08] rounded-full border border-[#0307121A]"
+                    data-tip="user"
+                    ><i class="fa-solid fa-user-plus"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    class="tooltip tooltip-bottom bg-[#12132D08] rounded-full border border-[#0307121A]"
+                    data-tip="flag"
+                    ><i class="fa-regular fa-flag"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+            <div class="">
+              <a class="btn bg-[#797DFC] rounded-full text-white text-xl"
+                >Sign In</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- banner section -->
+      <section>
+        <div></div>
+      </section>
+    </header>
     <main></main>
     <footer></footer>
     <!-- script link here -->
