@@ -34,11 +34,12 @@
   </head>
   <body class="font-mulish">
     <header class="container lg:px-10">
+      <!-- navbar here -->
       <nav>
         <div class="navbar flex bg-base-100">
           <div class="flex-1">
             <div class="dropdown">
-              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <div tabindex="0" role="button" class="mx-3 lg:hidden">
                 <a href="#" class="size-5"
                   ><i class="fa-solid fa-ellipsis-vertical"></i
                 ></a>
@@ -77,9 +78,7 @@
                 </li>
               </ul>
             </div>
-            <a class="btn btn-ghost text-xl"
-              ><img src="images/logo.png" alt=""
-            /></a>
+            <a class="text-xl"><img src="images/logo.png" alt="" /></a>
           </div>
           <div class="flex gap-4">
             <div class="hidden lg:flex">
@@ -125,7 +124,55 @@
 
       <!-- banner section -->
       <section>
-        <div></div>
+        <div class="bg-[#12132D] rounded-2xl">
+          <div class="hero w-full bg-[url(images/bgbanner.png)] bg-cover">
+            <div
+              class="hero-content flex lg:flex-row lg:gap-10 flex-col py-12 lg:py-20"
+            >
+              <div class="max-w-md text-white">
+                <h1
+                  class="lg:text-5xl text-4xl font-bold lg:font-black leading-snug"
+                >
+                  Welcome to the
+                  <span class="text-[#797DFC]">ReTro</span> Forum
+                </h1>
+                <p class="text-xl my-3">
+                  Share your favorite opinion and win and wp forum coffee mug!
+                </p>
+                <div
+                  class="bg-white p-1 flex gap-2 justify-between rounded-full my-5"
+                >
+                  <input
+                    type="text"
+                    name=""
+                    id=""
+                    class="rounded-full px-3 flex-1 focus:bg-gray-300 text-black"
+                    placeholder="Search here anything"
+                  />
+                  <button class="btn bg-[#797DFC] text-white px-7 rounded-full">
+                    Search
+                  </button>
+                </div>
+              </div>
+              <div
+                class="bg-white p-8 text-2xl font-medium rounded-3xl space-y-3"
+              >
+                <p class="flex justify-between gap-8">
+                  <span>Registered Users</span><span>01</span>
+                </p>
+                <p class="flex justify-between gap-8">
+                  <span>Forum</span><span>05</span>
+                </p>
+                <p class="flex justify-between gap-8">
+                  <span>Topics</span><span>03</span>
+                </p>
+                <p class="flex justify-between gap-8">
+                  <span>Replies</span><span>02</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </header>
     <main></main>
