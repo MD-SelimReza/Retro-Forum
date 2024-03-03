@@ -145,11 +145,14 @@
                   <input
                     type="text"
                     name=""
-                    id=""
+                    id="search-field"
                     class="rounded-full px-3 flex-1 focus:bg-gray-300 text-black"
                     placeholder="Search here anything"
                   />
-                  <button class="btn bg-[#797DFC] text-white px-7 rounded-full">
+                  <button
+                    onclick="searchPost()"
+                    class="btn bg-[#797DFC] text-white px-7 rounded-full"
+                  >
                     Search
                   </button>
                 </div>
@@ -213,7 +216,7 @@
               </div>
             </div> -->
           </div>
-          <div class="bg-[#12132D08] w-full lg:w-[40%] p-4 rounded-2xl">
+          <div class="bg-[#12132D08] w-full lg:w-[40%] mt-5 p-4 rounded-2xl">
             <div class="flex justify-between mb-5">
               <h5 class="text-[#12132D] text-xl font-bold">Title</h5>
               <p>

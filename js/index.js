@@ -1,21 +1,35 @@
-const postsLoads = async () => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
-    const json = await res.json();
-    const posts = json.posts;
-    // console.log(posts);
-    displayPosts(posts);
+const postsLoads = async (searchText, isSearch) => {
+    if (isSearch) {
+        const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
+        const json = await res.json();
+        const posts = json.posts;
+        displayPosts(posts);
+    } else {
+        const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+        const json = await res.json();
+        const posts = json.posts;
+        displayPosts(posts);
+    }
 };
 
-const displayPosts = (posts) => {
+function displayPosts(posts) {
     const postsContainer = document.getElementById('posts-container');
+    postsContainer.textContent = '';
     posts.forEach(post => {
-        // console.log(post);
+        // console.log(post.isActive);
+        const isActive = document.getElementById('isActive');
+        // if (post.isActive = true) {
+        //     isActive.classList.add('bg-green-400');
+        // }
+        // else {
+        //     isActive.classList.add('bg-red-400');
+        // };
         const postBox = document.createElement('div');
         postBox.classList = "flex gap-4 bg-[#F3F3F5] rounded-3xl p-6 mt-5";
         postBox.innerHTML = `
         <div class="size-16 bg-gray-500 relative rounded-lg">
-            <div
-                class="bg-green-500 size-3 rounded-full absolute -top-1 -right-1"
+            <div id="isActive"
+                class="size-3 bg-green-400 rounded-full absolute -top-1 -right-1"
             ></div>
             <img src="${post.image}" alt="profile-pic" class="size-16 rounded-lg" />
         </div>
@@ -33,7 +47,7 @@ const displayPosts = (posts) => {
                 <span><i class="fa-regular fa-eye"></i> ${post.view_count}</span>
                 <span><i class="fa-regular fa-clock"></i> ${post.posted_time} min</span>
                 </p>
-                <span onclick="readPosts(${post.id})" class="bg-[#10B981] text-white rounded-full px-1"><i class="fa-regular fa-envelope"></i></span>
+                <span onclick="readPost(${console.log(post)})" class="bg-[#10B981] text-white rounded-full px-1"><i class="fa-regular fa-envelope"></i></span>
             </div>
         </div>
         `;
@@ -41,9 +55,21 @@ const displayPosts = (posts) => {
     });
 };
 
-const readPosts = (post) => {
-    // console.log(post);
+
+const searchPost = () => {
+    const searchField = document.getElementById('search-field');
+    const searchText = searchField.value;
+    postsLoads(searchText, true);
 }
+
+const searchField = document.getElementById('search-field');
+searchField.addEventListener('keypress', (event) => {
+    if (event.key = "Enter") {
+        const searchText = document.getElementById('search-field').value;
+        postsLoads(searchText, true);
+    }
+})
+
 
 const fetchLatestPosts = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/latest-posts`);
